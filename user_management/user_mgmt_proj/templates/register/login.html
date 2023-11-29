@@ -1,0 +1,17 @@
+{% extends '../base.html' %}
+
+{% block title %} Login {% endblock %}
+{% block body %}
+
+
+{% if error_message %}
+<h2> {{error_message}} </h2>
+{% endif %}
+<form method="POST">
+    {% csrf_token %}
+{{form.as_p}}
+    <button type="submit">Register</button>
+</form>
+
+
+{% endblock body %}
