@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Carousel</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <!-- Bootstrap Carousel -->
+        <div id="productCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                {% for product in products %}
+                {% if forloop.counter0|divisibleby:4 %}
+                {% if not forloop.first %}</div>{% endif %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <div class="row">
+                {% endif %}
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ product.name }}</h5>
+                                    <p class="card-text">{{ product.description }}</p>
+                                </div>
+                            </div>
+                        </div>
+                {% if forloop.last %}
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <a class="carousel-control-prev" href="#productCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#productCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

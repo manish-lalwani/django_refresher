@@ -1,0 +1,13 @@
+<h2>{{ product.name }}</h2>
+<p>{{ product.description }}</p>
+<p>Price: {{ product.price }}</p>
+<p>In stock: {{ product.stock }}</p>
+{% if product.image %}
+  <img src="{{ product.image.url }}" alt="{{ product.name }}">
+{% endif %}
+
+<form action="{% url 'cart_add' product.id %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Add to cart">
+</form>
+
