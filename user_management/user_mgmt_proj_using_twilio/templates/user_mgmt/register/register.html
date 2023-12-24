@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{%block title%} REGISTER {%endblock title%}
+
+{%block body%}
+    <form method="POST">
+        {%csrf_token%}
+        {{form.as_p}}
+        <button type="submit">REGISTER</button>
+    </form>
+
+{%endblock body%}
